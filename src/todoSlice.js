@@ -11,9 +11,9 @@ export const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       const todo = {
-        text: action.payload,
+        title: action.payload,
         id: Math.random() * 100,
-        completed: false,
+        done: false,
       };
       state.todos.push(todo);
       state.count += 1;
@@ -25,7 +25,7 @@ export const todoSlice = createSlice({
     toggleTodo: (state, action) => {
       const todo = state.todos.find((todo) => todo.id === action.payload);
       if (todo) {
-        todo.completed = !todo.completed;
+        todo.done = !todo.done;
       }
     },
   },

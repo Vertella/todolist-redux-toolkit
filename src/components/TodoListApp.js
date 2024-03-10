@@ -27,26 +27,28 @@ function TodoList() {
 
   return (
     <div className="App">
-      <h1>TODO List</h1>
+      <h1 className="app-title">TODO List</h1>
       <form className="App-form" onSubmit={handleAddTodo}>
         <input
           type="text"
           name="todoInput"
           placeholder="Add a new todo"
         />
-        <button type="submit">+</button>
+        <button className="add-button" type="submit">Add</button>
       </form>
       <div className="Todos">
         {todos.length > 0 ? (
           todos.map((todo) => (
-            <div key={todo.id}>
+            <div className="todo-item" key={todo.id}>
               <input
                 type="checkbox"
-                checked={todo.completed}
+                checked={todo.done}
                 onChange={() => handleToggleTodo(todo.id)}
               />
-              <span>{todo.text}</span>
-              <button onClick={() => handleRemoveTodo(todo.id)}>Remove</button>
+              <span className={`${todo.done ? "completed" : ""}`}>
+                {todo.title}
+              </span>
+              <button className="remove-button" onClick={() => handleRemoveTodo(todo.id)} >Remove</button>
             </div>
           ))
         ) : (
